@@ -27,6 +27,7 @@
 #define _GLMC_H
 
 #include <stdint.h>
+#include <math.h>
 
 // types
 
