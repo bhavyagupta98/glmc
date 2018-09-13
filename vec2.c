@@ -135,7 +135,7 @@ void glmc_vec2f_madd(vec2f dest, vec2f src_a, vec2f src_b) // dest += src_a * sr
 void glmc_vec2f_msub(vec2f dest, vec2f src_a, vec2f src_b) // dest -= src_a * src_b;
 {
 	for (int i=0;i<2;i++){
-		dest[i] -= (src_a[i]+src_b[i]);
+		dest[i] -= (src_a[i]*src_b[i]);
 	}
 }
 

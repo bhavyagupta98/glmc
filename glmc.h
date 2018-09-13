@@ -34,6 +34,9 @@
 typedef float vec4f[4];
 typedef float vec3f[3];
 typedef float vec2f[2];
+typedef float mat4[4][4];
+typedef float mat3[3][3];
+typedef float mat2[2][2];
 
 // vec3f
 
@@ -140,5 +143,20 @@ void glmc_vec2f_madd(vec2f dest, vec2f src_a, vec2f src_b); // dest += src_a * s
 void glmc_vec2f_msub(vec2f dest, vec2f src_a, vec2f src_b); // dest -= src_a * src_b;
 
 float glmc_vec2f_dot(vec2f src_a, vec2f src_b);
+
+//mat2
+
+void glmc_mat2_add(mat2 dest,mat2 src_a,mat2 src_b);
+void glmc_mat2_sub(mat2 dest,mat2 src_a,mat2 src_b);
+void glmc_mat2_mul(mat2 dest,mat2 src_a,mat2 src_b);
+void glmc_mat2_div(mat2 dest,mat2 src_a,mat2 src_b);
+void glmc_mat2_mul_scalar(mat2 dest,mat2 src_a,float src);
+void glmc_mat2_div_scalar(mat2 dest,mat2 src_a,float src);
+void glmc_mat2_normalize(mat2 dest,mat2 src_a);
+void glmc_mat2_madd(mat2 dest,mat2 src_a,mat2 src_b);
+void glmc_mat2_msub(mat2 dest,mat2 src_a,mat2 src_b);
+float glmc_mat2_discriminant(mat2 dest);
+void glmc_mat2_inverse(mat2 dest,mat2 src);
+void glmc_mat2_transpose(mat2 dest,mat2 src);
 
 #endif /* _GLMC_H */
