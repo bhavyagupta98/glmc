@@ -93,21 +93,27 @@ float glmc_mat4_discriminant(mat4 dest){
 	}
 	return disc;
 }
-/*
+
 void glmc_mat4_inverse(mat4 dest,mat4 src){
 	float det = glmc_mat4_discriminant(src);
+	mat3 temp;
 	for (int i=0;i<4;i++){
 		for (int j=0;j<4;j++){
-			if ((i+j)%2==0){
-				dest[j][i] = ((src[(i+1)%4][(j+1)%4]*src[(i+2)%4][(j+2)%4])-(src[(i+2)%4][(j+1)%4]*src[(i+1)%4][(j+2)%4]))/det;
+			for(int a=i+1,c=0;a<i+4;a++,c++){
+				for(int b=j+1,d=0;b<i+4;b++,d++){
+					temp[c][d]=src[a%4][b%4];
+				}
+			}
+			if((i+j)%2==0){
+				dest[j][i] = src[i][j]*(glmc_mat3_discriminant(temp));
 			}
 			else{
-				dest[j][i] = -((src[(i+1)%4][(j+1)%4]*src[(i+2)%4][(j+2)%4])-(src[(i+2)%4][(j+1)%4]*src[(i+1)%4][(j+2)%4]))/det;
+				dest[j][i] = -src[i][j]*(glmc_mat3_discriminant(temp));
 			}
 		}
 	}
 }
-*/	
+	
 
 
 void glmc_mat4_transpose(mat4 dest,mat4 src){
