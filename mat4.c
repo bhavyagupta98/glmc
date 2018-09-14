@@ -79,21 +79,21 @@ void glmc_mat4_msub(mat4 dest,mat4 src_a,mat4 src_b){
 		}
 	}
 }
-/*
+
 float glmc_mat4_discriminant(mat4 dest){
 	float disc = 0;
-	for(int i=0;i<4;i++){
-		int j = i+1;
-		if(i==1){
-			disc += dest[0][i]*(dest[1][(j+1)%4]*dest[2][j%4]);
+	mat3 temp;
+	for (int i=0;i<4;i++){
+		for (int j=1;j<4;j++){
+			for (int k=i+1,t=0;k<i+4;k++,t++){
+				temp[j-1][t]=dest[j][k%4];
+			}
 		}
-		else {
-			disc += -(dest[0][i]*(dest[1][(j+1)%4]*dest[2][j%4]));
-		}
+		disc += dest[0][i]*(glmc_mat3_discriminant(temp));
 	}
 	return disc;
 }
-
+/*
 void glmc_mat4_inverse(mat4 dest,mat4 src){
 	float det = glmc_mat4_discriminant(src);
 	for (int i=0;i<4;i++){
@@ -116,4 +116,18 @@ void glmc_mat4_transpose(mat4 dest,mat4 src){
 			dest[j][i] = src[i][j];
 		}
 	}
+}
+
+float glmc_mat3_discriminant(mat3 dest){
+	float disc = 0;
+	for(int i=0;i<3;i++){
+		int j = i+1;
+		if(i==1){
+			disc += dest[0][i]*(dest[1][(j+1)%3]*dest[2][j%3]);
+		}
+		else {
+			disc += -(dest[0][i]*(dest[1][(j+1)%3]*dest[2][j%3]));
+		}
+	}
+	return disc;
 }
