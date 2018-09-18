@@ -115,15 +115,15 @@ float glmc_mat3_discriminant(mat3 dest){
 
 void glmc_mat3_inverse(mat3 dest,mat3 src){
 	float det = glmc_mat3_discriminant(src);
-	dest[0][0] = src[0][0]*(src[1][1]*src[2][2] - src[1][2]*src[2][1])/disc;
-	dest[1][0] = src[0][1]*(src[1][0]*src[2][2] - src[1][2]*src[2][0])/disc;
-	dest[2][0] = src[0][2]*(src[1][0]*src[2][1] - src[1][1]*src[2][0])/disc;
-	dest[0][1] = src[1][0]*(src[2][1]*src[0][2] - src[0][1]*src[2][2])/disc;
-	dest[1][1] = src[1][1]*(src[0][0]*src[2][2] - src[0][2]*src[0][2])/disc;
-	dest[2][1] = src[1][2]*(src[2][0]*src[0][1] - src[0][0]*src[2][1])/disc;
-	dest[0][2] = src[2][0]*(src[0][1]*src[1][2] - src[0][2]*src[1][1])/disc;
-	dest[1][2] = src[2][1]*(src[0][2]*src[1][0] - src[0][0]*src[1][2])/disc;
-	dest[2][2] = src[2][2]*(src[0][0]*src[1][1] - src[0][1]*src[1][0])/disc;
+	dest[0][0] = src[0][0]*(src[1][1]*src[2][2] - src[1][2]*src[2][1])/det;
+	dest[1][0] = src[0][1]*(src[1][0]*src[2][2] - src[1][2]*src[2][0])/det;
+	dest[2][0] = src[0][2]*(src[1][0]*src[2][1] - src[1][1]*src[2][0])/det;
+	dest[0][1] = src[1][0]*(src[2][1]*src[0][2] - src[0][1]*src[2][2])/det;
+	dest[1][1] = src[1][1]*(src[0][0]*src[2][2] - src[0][2]*src[0][2])/det;
+	dest[2][1] = src[1][2]*(src[2][0]*src[0][1] - src[0][0]*src[2][1])/det;
+	dest[0][2] = src[2][0]*(src[0][1]*src[1][2] - src[0][2]*src[1][1])/det;
+	dest[1][2] = src[2][1]*(src[0][2]*src[1][0] - src[0][0]*src[1][2])/det;
+	dest[2][2] = src[2][2]*(src[0][0]*src[1][1] - src[0][1]*src[1][0])/det;
 }	
 
 
