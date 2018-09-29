@@ -423,3 +423,45 @@ inline void glmc_mat4_scale(mat4f dest , float x, float y, float z)
 	dest[3][2] = 0;
 	dest[3][3] = 1;
 }
+
+inline void glmc_mat4f_ortho_projection(mat4f dest, float t, float b, float r, float l)
+{
+	dest[0][0] = 2/(r - l);
+	dest[0][1] = 1;
+	dest[0][2] = 1;
+	dest[0][3] = 1;
+	dest[1][0] = 1;
+	dest[1][1] = 2/(t - b);
+	dest[1][2] = 1;
+	dest[1][3] = 1;
+	dest[2][0] = 1;
+	dest[2][1] = 1;
+	dest[2][2] = 1;
+	dest[2][3] = 1;
+	dest[3][0] = -1*(r + l)/(r - l);
+	dest[3][1] = -1*(t + b)/(t - b);
+	dest[3][2] = 1;
+	dest[3][3] = 1;
+}
+
+inline void glmc_mat4f_perspective_projection(mat4f dest, float alpha, float aspect, float near, float far)
+{
+	float tan_val = tan(alpha/2);
+
+	dest[0][0] = 1/(aspect*tan_val);
+	dest[0][1] = 0;
+	dest[0][2] = 0;
+	dest[0][3] = 0;
+	dest[1][0] = 0;
+	dest[1][1] = 1/tan_val;
+	dest[1][2] = 0;
+	dest[1][3] = 0;
+	dest[2][0] = 0;
+	dest[2][1] = 0;
+	dest[2][2] = far/(far - near);
+	dest[2][3] = 1;
+	dest[3][0] = 0;
+	dest[3][1] = 0;
+	dest[3][2] = 0;
+	dest[3][3] = -1*(far*near)/(far - near);
+}

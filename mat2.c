@@ -163,25 +163,6 @@ inline void glmc_mat2f_normlize_dest(mat2f dest)
 	dest[1][1] = dest[1][1]*inv;
 }
 
-inline void glmc_mat2f_translation(mat2f dest, float t)
-{
-	dest[0][0] = 1.0;
-	dest[0][1] = 0;
-	dest[1][0] = t;
-	dest[1][1] = 1.0;
-}
-
-inline void glmc_mat2f_rotation(mat2f dest, float theta)
-{
-	float c = cos(theta);
-	float s = sin(theta);
-
-	dest[0][0] = c;
-	dest[0][1] = s;
-	dest[1][0] = -1*s;
-	dest[1][1] = c;
-}
-
 inline void glmc_mat2f_scale(mat2f dest, float x)
 {
 	dest[0][0] = x ;

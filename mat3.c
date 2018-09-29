@@ -267,21 +267,6 @@ inline void glmc_mat3f_translation(mat3f dest, float t1, float t2)
 	dest[2][1] = t2;
 	dest[2][2] = 1.0;
 }
-inline void glmc_mat3f_rotation(mat3f dest, float x, float y, float z, float theta)
-{
-	float c = cos(theta);
-	float s = sin(theta);
-
-	dest[0][0] = c + x*x*(1-c);
-	dest[0][1] = y*x*(1-c) + z*s;
-	dest[0][2] = z*x*(1-c) - y*s;
-	dest[1][0] = x*y*(1-c) - z*s;
-	dest[1][1] = c + y*y*(1-c);
-	dest[1][2] = z*y*(1-c) + x*(s);
-	dest[2][0] = x*z*(1-c) + y*s;
-	dest[2][1] = y*z*(1-c) - x*s;
-	dest[2][2] = c + z*z*(1-c);
-}
 
 inline void glmc_mat3f_scale(mat3f dest, float x, float y)
 {

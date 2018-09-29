@@ -73,6 +73,8 @@ void glmc_vec3f_msub(vec3f dest, vec3f src_a, vec3f src_b); // dest -= src_a * s
 
 float glmc_vec3f_dot(vec3f src_a, vec3f src_b);
 void  glmc_vec3f_cross(vec3f dest, vec3f src_a, vec3f src_b);
+void glmc_vec3f_refraction(vec3f dest, vec3f src, vec3f normal, float eta);
+void glmc_vec3f_reflection(vec3f dest, vec3f src, vec3f normal);
 
 // vec4f
 
@@ -167,8 +169,6 @@ void glmc_mat2f_normlize(mat2f dest, mat2f src);
 void glmc_mat2f_normlize_dest(mat2f dest);
 void glmc_mat2f_transpose(mat2f dest, mat2f src);
 void glmc_mat2f_transpose_dest(mat2f dest);
-void glmc_mat2f_translation(mat2f dest, float t);
-void glmc_mat2f_rotation(mat2f dest, float theta);
 void glmc_mat2f_scale(mat2f dest, float x);
 
 //mat3
@@ -192,7 +192,6 @@ void glmc_mat3f_inverse(mat3f dest, mat3f src);
 void glmc_mat3f_normlize(mat3f dest, mat3f src);
 void glmc_mat3f_normlize_dest(mat3f dest);
 void glmc_mat3f_translation(mat3f dest, float t1, float t2);
-void glmc_mat3f_rotation(mat3f dest, float x, float y, float z, float theta);
 void glmc_mat3f_scale(mat3f dest, float x, float y);
 
 //mat4
@@ -218,5 +217,13 @@ void glmc_mat4f_normlize_dest(mat4f dest);
 void glmc_mat4f_translation(mat4f dest, float t1, float t2, float t3);
 void glmc_mat4f_rotation(mat4f dest, float x, float y, float z, float theta);
 void glmc_mat4f_scale(mat4f dest, float x, float y,float z);
+void glmc_mat4f_ortho_projection(mat4f dest, float t, float b, float r, float l);
+void glmc_mat4f_perspective_projection(mat4f dest, float alpha, float aspect, float near, float far);
+
+// Matrix vector functions
+
+void glmc_mat2f_vec2f(vec2f dest, mat2f src_a, vec2f src_b);
+void glmc_mat3f_vec3f(vec3f dest, mat3f src_a, vec3f src_b);
+void glmc_mat4f_vec4f(vec4f dest, mat4f src_a, vec4f src_b);
 
 #endif /* _GLMC_H */
