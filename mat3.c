@@ -282,3 +282,16 @@ inline void glmc_mat3f_rotation(mat3f dest, float x, float y, float z, float the
 	dest[2][1] = y*z*(1-c) - x*s;
 	dest[2][2] = c + z*z*(1-c);
 }
+
+inline void glmc_mat3f_scale(mat3f dest, float x, float y)
+{
+	dest[0][0] = x;
+	dest[0][1] = 0;
+	dest[0][2] = 0;
+	dest[1][0] = 0;
+	dest[1][1] = y;
+	dest[1][2] = 0;
+	dest[2][0] = 0;
+	dest[2][1] = 0;
+	dest[2][2] = 1;
+}

@@ -181,3 +181,11 @@ inline void glmc_mat2f_rotation(mat2f dest, float theta)
 	dest[1][0] = -1*s;
 	dest[1][1] = c;
 }
+
+inline void glmc_mat2f_scale(mat2f dest, float x)
+{
+	dest[0][0] = x ;
+	dest[0][1] = 0;
+	dest[1][0] = 0;
+	dest[1][1] = 1;
+}
